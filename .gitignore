@@ -1,0 +1,26 @@
+# MacOS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+._*
+Thumbs.db
+
+*p01-essentials/*
+*p03-dynFusion/*
+_plugins/*
+_customScripts/Logs/
+_bundles/Archive/
+_bundles/temp/
+!*/packages.config
+P01-Essentials/*
+!*/packages.config
+p03-dynfusion/*
+!*/packages.config
+p02-essentials/*
+!*/packages.config
+p03-essentials-flex/*
+!*/packages.config
+p04-essentials-devices/*
+!*/packages.config
+p05-essentials-dynfusion/*
+!*/packages.config
