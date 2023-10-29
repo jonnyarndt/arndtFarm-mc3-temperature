@@ -1,0 +1,90 @@
+/*******************************************************************************************
+  SIMPL+ Module Information
+  (Fill in comments below)
+*******************************************************************************************/
+/*
+Dealer Name: PepperDash Technology
+System Name:
+System Number:
+Programmer: JDA
+Comments:
+Copyright:	2017
+Legal Disclaimer:
+The material in which this notice appears is the property of PepperDash Technology Corp., 
+which claims copyright under the laws of the United States of America in the entire body 
+of material and in all parts thereof, regardless of the use to which it is being put.  
+Any use, in whole or in part, of this material by another party without the express written 
+permission of PepperDash Technology Corp. is prohibited.  PepperDash Technology Corp. 
+reserves all rights under applicable laws.
+*/
+
+/*******************************************************************************************
+  Compiler Directives
+  (Uncomment and declare compiler directives as needed)
+*******************************************************************************************/
+// #ENABLE_DYNAMIC
+// #SYMBOL_NAME ""
+// #HINT ""
+#DEFINE_CONSTANT		Max_Inputs	2
+#DEFINE_CONSTANT		Max_Length	150
+
+// #CATEGORY "" 
+// #PRINT_TO_TRACE
+// #DIGITAL_EXPAND 
+// #ANALOG_SERIAL_EXPAND 
+// #OUTPUT_SHIFT 
+// #HELP_PDF_FILE ""
+#DEFAULT_VOLATILE
+#ENABLE_STACK_CHECKING
+#ENABLE_TRACE
+// #ENCODING_ASCII
+// #ENCODING_UTF16
+// #ENCODING_INHERIT_FROM_PARENT
+// #ENCODING_INHERIT_FROM_PROGRAM
+/*
+#HELP_BEGIN
+   (add additional lines of help lines)
+#HELP_END
+*/
+
+/*******************************************************************************************
+  Include Libraries
+  (Uncomment and include additional libraries as needed)
+*******************************************************************************************/
+// #CRESTRON_LIBRARY ""
+// #USER_LIBRARY ""
+
+/*******************************************************************************************
+  DIGITAL, ANALOG and SERIAL INPUTS and OUTPUTS
+  (Uncomment and declare inputs and outputs as needed)
+*******************************************************************************************/
+DIGITAL_INPUT	Trigger; 
+// ANALOG_INPUT 
+STRING_INPUT	String_In[Max_Inputs][Max_Length]; 
+// BUFFER_INPUT 
+
+// DIGITAL_OUTPUT 
+// ANALOG_OUTPUT 
+STRING_OUTPUT	String_Out; 
+
+
+
+/*******************************************************************************************
+  Event Handlers
+  (Uncomment and declare additional event handlers as needed)
+*******************************************************************************************/
+
+PUSH Trigger
+{
+	String sTemp[Max_Length], sTempOut[Max_Length];
+    Integer x;
+
+    For (x = 1 To Max_Inputs)
+	{
+    	Makestring (sTemp, "%s", String_In[x]);
+		sTempOut = sTempOut + sTemp;
+	}
+
+	Makestring (String_Out, "%s", sTempOut);
+}
+

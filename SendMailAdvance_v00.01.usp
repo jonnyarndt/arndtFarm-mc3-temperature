@@ -74,7 +74,7 @@ INTEGER				iTemp;
 // LONG_INTEGER
 SIGNED_INTEGER 		signedIntegerError;
 // SIGNED_LONG_INTEGER
-// STRING
+STRING				Symbol$[150];
 
 /*******************************************************************************************
   Event Handlers
@@ -108,8 +108,15 @@ PUSH SendMailAdvanceTrigger
 		Subject$,
 		Message$,
 		Zero,
+
 		Attachment$
 	);
+
+	if ( signedIntegerError < 0 )
+	{
+		Trace( "%s SendMailAdvance: Error value: %d sending email\n", Symbol$, signedIntegerError );
+		generateUserError( "%s, Error value: %d sending email\n", Symbol$, signedIntegerError );
+	}
 }
 
 
@@ -118,10 +125,11 @@ PUSH SendMailAdvanceTrigger
   Uncomment and place one-time startup code here
   (This code will get called when the system starts up)
 *******************************************************************************************/
-/*
+
 Function Main()
 {
-    // TODO:  Add code here
+    Symbol$ = GetSymbolInstanceName();
+	// TODO:  Add code here
     // Initialize declared global and local variables/arrays as needed.
 
     // WaitForInitializationComplete();
@@ -131,5 +139,5 @@ Function Main()
     //   their correct values set until after the logic processor
     //   runs and propagates the values to them.
 }
-*/
+
 
